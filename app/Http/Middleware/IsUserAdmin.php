@@ -15,8 +15,12 @@ class IsUserAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->is_admin !== 1) {
+        if(empty(auth()->user())){
             return redirect()->route('login');
+        }else{
+            if (auth()->user()->is_admin !== 1) {
+                return redirect()->route('login');
+            }
         }
         return $next($request);
     }

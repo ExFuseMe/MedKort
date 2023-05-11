@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-    <form method="POST" action="{{action(" books.store")}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route("book.store")}}" enctype="multipart/form-data">
         @csrf
         <input class="file-adding" type="file" id="image" name="image" />
         <input type="text" id="title" name="title" placeholder="Название" />
