@@ -11,6 +11,7 @@ use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UpdateDatabaseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +58,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('/book', BookController::class)->middleware('is_admin');
 Route::resource('/category', CategoryController::class)->middleware('is_admin');
+Route::get('/update', function(){
+    return view('update');
+})->middleware('is_admin');
+Route::post('/update', [UpdateDatabaseController::class, 'upload_books'])->middleware('is_admin')->name('update.store');

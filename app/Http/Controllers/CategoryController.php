@@ -7,7 +7,8 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     public function index(){
-        return Category::all();
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
     public function store(Request $request)
     {
@@ -22,7 +23,7 @@ class CategoryController extends Controller
     {
         return view('categories.create');
     }
-    public function show(Category $category)
+    public function edit(Category $category)
     {
         return view('categories.edit', compact('category'));
     }

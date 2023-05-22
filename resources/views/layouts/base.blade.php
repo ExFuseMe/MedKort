@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @hasSection('title')
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @hasSection('title')
 
-            <title>@yield('title')</title>
-        @else
-            <title>{{ config('app.name') }}</title>
-        @endif
+    <title>@yield('title')</title>
+    @else
+    <title>{{ config('app.name') }}</title>
+    @endif
 
-        <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}" />
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         @livewireStyles
         @livewireScripts
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+</head>
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    </head>
-
-    <body>
-        @yield('body')
-    </body>
+<body>
+    @yield('body')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#book-image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
 </html>

@@ -8,6 +8,6 @@
     <WebRoot>public</WebRoot>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="public\covers\" />
+    <Folder Include="storage\app\public\covers\" />
   </ItemGroup>
 </Project>

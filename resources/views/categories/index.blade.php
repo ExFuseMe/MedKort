@@ -3,7 +3,9 @@
 @section('body')
 <div class="container">
     @foreach($categories as $category)
-    <div>{{$category}}</div>
+    <div>
+        <a href="{{route('category.show', $category)}}">{{$category->id}}</a>{{$category->title}}
+    </div>
     @endforeach
 </div>
 @endsection
